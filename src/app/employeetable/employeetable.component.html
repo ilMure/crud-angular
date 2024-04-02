@@ -1,0 +1,96 @@
+<div class="optionsDiv">
+    <label for="sort">Ordina per: </label>
+    <select id="sort" [(ngModel)]="sort" (ngModelChange)="onInputChange()">
+        <option value="firstName">Nome</option>
+        <option value="lastName">Cognome</option>
+        <option value="birthDate">Data di Nascita</option>
+        <option value="gender">Genere</option>
+        <option value="hireDate">Data Assunzione</option>
+    </select>
+    <label for="size">Dimensione tabella: </label>
+    <input type="number" [(ngModel)]="size" (ngModelChange)="onInputChange()" placeholder="Grandezza tabella..." id="size" min="1" max="150">
+    <button class="add" type="button" (click)="enableAddForm()">Aggiungi Impiegato</button>
+</div>
+
+<div class="formDiv" *ngIf="showAddForm" id="addForm">
+    <form #myForm="ngForm" (ngSubmit)="submitAddForm(myForm)">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" ngModel placeholder="Nome...">
+      
+        <label for="surname">Cognome:</label>
+        <input type="text" id="surname" name="surname" ngModel placeholder="Cognome...">
+
+        <label for="birthDate">Data nascita:</label>
+        <input type="date" id="birthDate" name="birthDate" ngModel>
+
+        <label for="gender">Genere:</label>
+        <select name="gender" id="gender" ngModel>
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+
+        <label for="hireDate">Data assunzione:</label>
+        <input type="date" id="hireDate" name="hireDate" ngModel>
+      
+        <button type="submit" class="add">Conferma</button>
+    </form>
+</div>
+
+<div class="formDiv" *ngIf="showModifyForm" id="modForm">
+    <form #myForm="ngForm" (ngSubmit)="submitModifyForm(myForm)">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" ngModel [(ngModel)]="nameToMod">
+      
+        <label for="surname">Cognome:</label>
+        <input type="text" id="surname" name="surname" ngModel [(ngModel)]="surnameToMod">
+
+        <label for="birthDate">Data nascita:</label>
+        <input type="date" id="birthDate" name="birthDate" ngModel [(ngModel)]="birthDateToMod">
+
+        <label for="gender">Genere:</label>
+        <select name="gender" id="gender" ngModel [(ngModel)]="genderToMod">
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+
+        <label for="hireDate">Data assunzione:</label>
+        <input type="date" id="hireDate" name="hireDate" ngModel [(ngModel)]="hireDateToMod">
+      
+        <button type="submit" class="add">Conferma</button>
+    </form>
+</div>
+
+<div>
+    <table *ngIf="data">
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Data di Nascita</th>
+            <th>Genere</th>
+            <th>Data Assunzione</th>
+            <th>Opzioni</th>
+        </tr>
+        <tr *ngFor="let item of data._embedded.employees">
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.birthDate}}</td>
+            <td>{{item.gender}}</td>
+            <td>{{item.hireDate}}</td>
+            <td><button class="delete" type="button" (click)="deleteEmployee(item.id)">Elimina</button>
+                <button class="modify" type="button" (click)="modifyEmployee(item.id)">Modifica</button>
+            </td>
+        </tr>
+        <tr>
+            <td><button class="first" type="button" (click)="changePage(0)">PrimaPagina</button></td>
+            <td><button class="prev" type="button" (click)="changePage(-1)">Pagina precedente</button></td>
+            <td class="currentPage">Pagina: {{page}}</td>   
+            <td><button class="next" type="button" (click)="changePage(1)">Pagina successiva</button></td>
+            <td><button class="last" type="button" (click)="changePage(9)">UltimaPagina</button></td>
+            <td></td>
+        </tr>
+    </table>
+</div>  
+
+
+    
+

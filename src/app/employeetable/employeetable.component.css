@@ -1,0 +1,81 @@
+table{
+    text-align: center;
+    border: 1.5px solid black;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    background-color: aliceblue;
+}
+
+button{
+    border-radius: 8px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+input{
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.optionsDiv{
+    text-align: center;
+    border: 1.5px solid black;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    background-color: rgb(199, 225, 205);
+    margin-bottom: 15px;
+    width: 60%;
+}
+
+.formDiv{
+    text-align: center;
+    border: 1.5px solid black;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 60%;
+}
+
+#addForm{
+    background-color: rgb(229, 237, 193);
+}
+
+#modForm{
+    background-color: rgb(212, 141, 86);
+}
+
+.next, .prev{
+    background-color: rgb(157, 203, 240);
+}
+
+.first, .last{
+    background-color: rgb(251, 204, 118);
+}
+
+.delete{
+    background-color: rgba(250, 118, 118, 0.927);
+    color: white;
+}
+
+.add{
+    background-color: rgb(108, 203, 76);
+    color: white;
+}
+
+.modify{
+    background-color: rgb(212, 141, 86);
+    color: white;
+}
+
+.currentPage{
+    font-size: large;
+    font-weight: 800;
+    color: rgba(132, 0, 255, 0.652);
+}
